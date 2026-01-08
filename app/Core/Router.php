@@ -6,12 +6,12 @@ class Router
 {
     protected array $routes = [];
 
-    public function get(string $uri, callable $action)
+    public function get(string $uri, $action)
     {
         $this->routes['GET'][$uri] = $action;
     }
 
-    public function post(string $uri, callable $action)
+    public function post(string $uri, $action)
     {
         $this->routes['POST'][$uri] = $action;
     }
@@ -26,6 +26,27 @@ class Router
             return;
         }
 
-        call_user_func($this->routes[$method][$uri]);
+        $action = $this->routes[$method][$uri];
+
+        // Caso 1: Closure
+        if (is_callable($action)) {
+            call_user_func($action);
+            return;
+        }
+
+        // Caso 2: Controller@method
+        if (is_string($action)) {
+            [$controller, $method] = explode('@', $action);
+            $controllerClass = "App\\Controllers\\{$controller}";
+
+            if (!class_exists($controllerClass)) {
+                throw new \Exception("Controller {$controllerClass} no existe");
+            }
+
+            call_user_func([new $controllerClass, $method]);
+            return;
+        }
+
+        throw new \Exception('Ruta mal definida');
     }
 }

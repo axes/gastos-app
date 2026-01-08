@@ -1,3 +1,6 @@
+# Apuntes y archivos a ignorar por Git
+/_apuntes/
+
 # Environment variables
 .env
 
