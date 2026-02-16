@@ -15,8 +15,9 @@ class AuthController
     {
         $rut = $_POST['rut'] ?? '';
         $password = $_POST['password'] ?? '';
+        $remember = !empty($_POST['remember']);
 
-        if (AuthService::attempt($rut, $password)) {
+        if (AuthService::attempt($rut, $password, $remember)) {
             header('Location: /dashboard');
             exit;
         }
