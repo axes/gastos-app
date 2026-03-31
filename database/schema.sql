@@ -112,12 +112,12 @@ INSERT INTO medios_pago (nombre, activo) VALUES
 
 -- Datos de prueba para usuarios (roles: admin, manager, user)
 -- Admin: rut=admin-001, password=admin123, departamento=Admin
--- Manager/Gino: rut=manager-001, password=manager123, departamento=IT (Jefe de área)
--- User/Nelson: rut=user-001, password=user123, departamento=IT (Miembro de IT)
+-- Manager/Juan: rut=manager-001, password=manager123, departamento=IT (Jefe de área)
+-- User/Jorge: rut=user-001, password=user123, departamento=IT (Miembro de IT)
 INSERT INTO users (rut, nombre, email, password_hash, departamento, estado, role) VALUES
 ('admin-001', 'Administrador', 'admin@example.com', '$2y$10$ebf4AW0korAVht7ZY5J1yueU49qCgaC2C.jY1dtwVKkaaYU2GhqMq', 'Administración', 'activo', 'admin'),
-('manager-001', 'Gino (Jefe IT)', 'gino@example.com', '$2y$10$xyWOkYQ2QLF0mdWd7wQnL.rm/g.QshpjP154agVs4ukoBGKm7oufK', 'IT', 'activo', 'manager'),
-('user-001', 'Nelson (IT)', 'nelson@example.com', '$2y$10$Vfp76.tkoN5Ggv8mnlGtI.metyx5Dfs/PmaH1gcbxg2P47rpaCaZi', 'IT', 'activo', 'user'),
+('manager-001', 'Juan (Jefe IT)', 'juan@example.com', '$2y$10$xyWOkYQ2QLF0mdWd7wQnL.rm/g.QshpjP154agVs4ukoBGKm7oufK', 'IT', 'activo', 'manager'),
+('user-001', 'Jorge (IT)', 'jorge@example.com', '$2y$10$Vfp76.tkoN5Ggv8mnlGtI.metyx5Dfs/PmaH1gcbxg2P47rpaCaZi', 'IT', 'activo', 'user'),
 ('finance-001', 'Equipo Finanzas', 'finance@example.com', '$2y$10$ebf4AW0korAVht7ZY5J1yueU49qCgaC2C.jY1dtwVKkaaYU2GhqMq', 'Finanzas', 'activo', 'finance');
 
 CREATE TABLE IF NOT EXISTS gastos (

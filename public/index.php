@@ -2,6 +2,17 @@
 
 declare(strict_types=1);
 
+// Cuando se usa el servidor embebido (php -S), permitir que archivos estaticos
+// existentes (css/js/img, etc.) se sirvan directamente.
+if (PHP_SAPI === 'cli-server') {
+    $requestedPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+    $fullPath = __DIR__ . $requestedPath;
+
+    if ($requestedPath !== '/' && is_file($fullPath)) {
+        return false;
+    }
+}
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);

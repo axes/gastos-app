@@ -59,8 +59,8 @@ banco, tipo_cuenta, numero_cuenta, titular_cuenta, rut_titular, estado (activo|i
 ```
 **Test Users:**
 - admin-001: role=admin, Depto=Administración
-- manager-001 (Gino): role=manager, Depto=IT
-- user-001 (Nelson): role=user, Depto=IT
+- manager-001 (Juan): role=manager, Depto=IT
+- user-001 (Jorge): role=user, Depto=IT
 - finance-001 (optional): role=finance, Depto=Finanzas
 
 ### Centros de Costo Table

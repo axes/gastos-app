@@ -1,5 +1,5 @@
 /* ===================================== */
-/* DEViR THEME OVERRIDES                 */
+/* THEME OVERRIDES                 */
 /* ===================================== */
 @font-face {
   font-family: "Graphik";
@@ -300,6 +300,78 @@ h1, h2, h3, h4, h5, h6 {
 
 .auth-page {
   background: radial-gradient(circle at top right, rgba(73, 156, 203, 0.25) 0%, rgba(31, 36, 72, 0.05) 45%, rgba(15, 18, 36, 0.08) 100%);
+}
+
+.auth-card {
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+.auth-form {
+  background-color: var(--surface);
+  color: var(--text);
+}
+
+.auth-title h2,
+.auth-form .form-label,
+.auth-form .form-check-label {
+  color: var(--text);
+}
+
+.auth-title p,
+.auth-helper {
+  color: var(--muted);
+}
+
+.auth-form .form-check-input {
+  background-color: var(--surface);
+  border-color: rgba(31, 36, 72, 0.32);
+}
+
+.auth-form .form-check-input:checked {
+  background-color: var(--d-blue-700);
+  border-color: var(--d-blue-700);
+}
+
+[data-theme="dark"] .auth-form .form-check-input {
+  background-color: #1b2140;
+  border-color: rgba(241, 244, 255, 0.38);
+}
+
+.auth-form .form-control {
+  background-color: var(--light-color);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.auth-form .form-control:focus {
+  background-color: var(--surface);
+}
+
+.auth-input-group .btn-outline-secondary {
+  color: var(--d-blue-900);
+  border-color: rgba(31, 36, 72, 0.28);
+  background-color: #ffffff;
+}
+
+.auth-input-group .btn-outline-secondary:hover,
+.auth-input-group .btn-outline-secondary:focus {
+  color: #ffffff;
+  background-color: var(--d-blue-700);
+  border-color: var(--d-blue-700);
+}
+
+[data-theme="dark"] .auth-input-group .btn-outline-secondary {
+  color: #f1f4ff;
+  background-color: #1b2140;
+  border-color: rgba(241, 244, 255, 0.35);
+}
+
+[data-theme="dark"] .auth-input-group .btn-outline-secondary:hover,
+[data-theme="dark"] .auth-input-group .btn-outline-secondary:focus {
+  color: #ffffff;
+  background-color: var(--d-sky);
+  border-color: var(--d-sky);
 }
 
 .auth-hero {
