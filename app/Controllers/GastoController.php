@@ -94,13 +94,7 @@ class GastoController
             return;
         }
 
-        // Only creators can edit (or admins, or encargados of the proyecto)
-        $user = AuthService::user();
-        $isCreator = $gasto['created_by'] == $user['id'];
-        $isEncargado = AuthorizationService::isEncargadoOfProyecto($gasto['proyecto_id']);
-        $isAdmin = AuthorizationService::isAdmin();
-
-        if (!($isCreator || $isEncargado || $isAdmin)) {
+        if (!$this->canManageGasto($gasto)) {
             http_response_code(403);
             echo 'No tienes permiso para editar este gasto.';
             return;
@@ -122,13 +116,7 @@ class GastoController
             return;
         }
 
-        // Only creators can edit (or admins, or encargados)
-        $user = AuthService::user();
-        $isCreator = $gasto['created_by'] == $user['id'];
-        $isEncargado = AuthorizationService::isEncargadoOfProyecto($gasto['proyecto_id']);
-        $isAdmin = AuthorizationService::isAdmin();
-
-        if (!($isCreator || $isEncargado || $isAdmin)) {
+        if (!$this->canManageGasto($gasto)) {
             $_SESSION['error'] = 'No tienes permiso para editar este gasto.';
             header('Location: /gastos');
             exit;
@@ -162,13 +150,7 @@ class GastoController
             return;
         }
 
-        // Only creator or encargado/admin can toggle
-        $user = AuthService::user();
-        $isCreator = $gasto['created_by'] == $user['id'];
-        $isEncargado = AuthorizationService::isEncargadoOfProyecto($gasto['proyecto_id']);
-        $isAdmin = AuthorizationService::isAdmin();
-
-        if (!($isCreator || $isEncargado || $isAdmin)) {
+        if (!$this->canManageGasto($gasto)) {
             $_SESSION['error'] = 'No tienes permiso.';
             header('Location: /gastos');
             exit;
@@ -177,6 +159,16 @@ class GastoController
         (new Gasto($this->db))->toggleActive($id);
         header('Location: /gastos');
         exit;
+    }
+
+    private function canManageGasto(array $gasto): bool
+    {
+        $user = AuthService::user();
+        $isCreator = $gasto['created_by'] == $user['id'];
+        $isEncargado = AuthorizationService::isEncargadoOfProyecto($gasto['proyecto_id']);
+        $isAdmin = AuthorizationService::isAdmin();
+
+        return $isCreator || $isEncargado || $isAdmin;
     }
 
     private function getAccessibleCentros()
