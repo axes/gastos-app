@@ -1,0 +1,5 @@
+[deploy]
+startCommand = "php -S 0.0.0.0:$PORT -t public/"
+
+[[deploy.preDeployCommands]]
+command = "mysql -h $MYSQLHOST -P $MYSQLPORT -u $MYSQLUSER -p$MYSQLPASSWORD $MYSQLDATABASE < database/schema.sql"
