@@ -228,3 +228,43 @@ Detener servidor:
 
 Base funcional para operacion de gastos por roles con flujo completo de aprobacion y reembolso. Ideal para extender con reportes, exportaciones y pruebas automatizadas.
 
+## Demo en vivo
+
+URL: https://gastos-app-production-c87e.up.railway.app
+
+Credenciales de prueba:
+- Admin: admin-001 / admin123
+- Manager: manager-001 / manager123
+- Usuario: user-001 / user123
+- Finanzas: finance-001 / admin123
+
+---
+
+## Deploy en Railway
+
+Este proyecto está configurado para desplegarse en Railway con Docker.
+
+### Archivos de configuración
+- `Dockerfile` — imagen PHP 8.3 con extensiones pdo, pdo_mysql, mbstring
+- `railway.toml` — configuración de build y pre-deploy
+- `app/Config/config.php` — carga variables de entorno del sistema en producción
+
+### Variables de entorno requeridas en Railway
+| Variable | Descripción |
+|---|---|
+| `APP_NAME` | Nombre de la app |
+| `APP_ENV` | `production` |
+| `APP_DEBUG` | `false` |
+| `APP_URL` | URL pública de Railway |
+| `DB_HOST` | `${{MYSQLHOST}}` |
+| `DB_NAME` | `${{MYSQLDATABASE}}` |
+| `DB_USER` | `${{MYSQLUSER}}` |
+| `DB_PASS` | `${{MYSQLPASSWORD}}` |
+
+### Base de datos
+El schema se encuentra en `database/schema.sql`.
+Para importar manualmente desde WSL:
+
+```bash
+mysql -h  -P  -u  -p  < database/schema.sql
+```
