@@ -3,7 +3,7 @@ builder = "dockerfile"
 dockerfilePath = "Dockerfile"
 
 [deploy]
-startCommand = "php -S 0.0.0.0:$PORT -t public/"
+startCommand = "php -S 0.0.0.0:8080 -t public/"
 
 [[deploy.preDeployCommands]]
-command = "mysql -h $MYSQLHOST -P $MYSQLPORT -u $MYSQLUSER -p$MYSQLPASSWORD $MYSQLDATABASE < database/schema.sql"
+command = "until mysqladmin ping -h $MYSQLHOST -P $MYSQLPORT -u $MYSQLUSER -p$MYSQLPASSWORD --silent; do echo 'Waiting for MySQL...'; sleep 2; done && mysql -h $MYSQLHOST -P $MYSQLPORT -u $MYSQLUSER -p$MYSQLPASSWORD $MYSQLDATABASE < /app/database/schema.sql"
