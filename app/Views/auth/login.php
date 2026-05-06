@@ -66,6 +66,25 @@
                         <button type="submit" class="btn btn-primary btn-lg w-100">Entrar</button>
                     </form>
 
+                    <div class="alert alert-info alert-sm mt-4" role="alert">
+                        <div class="fw-semibold mb-2">Credenciales de demostracion</div>
+                        <div class="small mb-2">Usa estos datos para probar la aplicacion online:</div>
+                        <div class="row g-2 small">
+                            <div class="col-12">
+                                <strong>Admin:</strong> admin-001 / admin123
+                            </div>
+                            <div class="col-12">
+                                <strong>Manager:</strong> manager-001 / manager123
+                            </div>
+                            <div class="col-12">
+                                <strong>User:</strong> user-001 / user123
+                            </div>
+                            <div class="col-12">
+                                <strong>Finance:</strong> finance-001 / admin123
+                            </div>
+                        </div>
+                    </div>
+
                     <p class="auth-helper">Si tienes problemas de acceso, contacta a Administracion.</p>
                 </div>
             </div>
